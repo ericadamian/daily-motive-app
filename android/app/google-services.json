@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "712903862859",
+    "firebase_url": "https://dailymotive-e3671.firebaseio.com",
+    "project_id": "dailymotive-e3671",
+    "storage_bucket": "dailymotive-e3671.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:712903862859:android:f3e4403bf585a69afb3bce",
+        "android_client_info": {
+          "package_name": "com.ericadamian.cs4990_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "712903862859-blfvbc3f005tfrlcsvsvlnca5aduelrk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ericadamian.cs4990_project",
+            "certificate_hash": "4642a5d6db2547c5e4e37c025b5149bb3e322cb4"
+          }
+        },
+        {
+          "client_id": "712903862859-424gh8uiajrca8ge4j7lon86n4k56ekj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9CeFmtC5pCW8RhK95R1vuw0F1L5Pis10"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "712903862859-424gh8uiajrca8ge4j7lon86n4k56ekj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
