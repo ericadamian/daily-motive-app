@@ -8,11 +8,12 @@
          location permissions for the 'MyLocation' functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
+    <uses-permission android:name="android.permission.INTERNET"/>
+    
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:icon="@mipmap/ic_launcher"
-        android:label="cs4990_project">
+        android:icon="@mipmap/launcher_icon"
+        android:label="Daily Motive">
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

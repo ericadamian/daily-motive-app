@@ -2,6 +2,7 @@ import 'package:cs4990_project/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:video_player/video_player.dart';
+import 'package:flutter/widgets.dart';
 import 'auth.dart';
 
 // running our app
@@ -30,11 +31,16 @@ class MyApp extends StatelessWidget {
         '/angryVideo3' : (context) => AngryVideo3(),
         '/overwhelmedVideo1' : (context) => OverwhelmedVideo1(),
         '/overwhelmedVideo2' : (context) => OverwhelmedVideo2(),
-        '/overwhelmedVideo3' : (context) => OverwhelmedVideo3()
+        '/overwhelmedVideo3' : (context) => OverwhelmedVideo3(),
       }
     );
   }
 }
+
+Auth auth = Auth();
+
+final emailController = TextEditingController();
+final pwController = TextEditingController();
 
 class LoginPage extends StatefulWidget {
   @override
@@ -48,10 +54,6 @@ class LoginPageState extends State<LoginPage>
   void initState() {
     super.initState();
   }
-  Auth auth = Auth();
-
-  final emailController = TextEditingController();
-  final pwController = TextEditingController();
 
 
   @override
@@ -60,6 +62,7 @@ class LoginPageState extends State<LoginPage>
     return new Scaffold(
 
       backgroundColor: Colors.white,
+      resizeToAvoidBottomPadding: false,
       body: new Stack(fit: StackFit.expand, children: <Widget>[
         new Image(
           image: new AssetImage("assets/motivation.jpeg"),
@@ -196,6 +199,7 @@ class LoginPageState extends State<LoginPage>
 }
 
 
+
 class CreateAccount extends StatelessWidget{
 
   Auth auth = Auth();
@@ -267,10 +271,6 @@ class CreateAccount extends StatelessWidget{
                       ),
 
 
-//                      new Padding(
-//                        padding: const EdgeInsets.only(top: 20.0),
-//                      ),
-
                       // password user field (using obscureText (***))
                       new TextFormField(
                         decoration: new InputDecoration(
@@ -338,30 +338,22 @@ class CreateAccount extends StatelessWidget{
 
 
 class MoodPage extends StatefulWidget {
+
   @override
   State createState() => new MoodPageState();
 }
 
 
 class MoodPageState extends State<MoodPage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
 
       backgroundColor: Colors.orange[300],
+      resizeToAvoidBottomPadding: false,
 
-      body: Center(
-
-
-        child: Column(
+      body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
 
@@ -377,7 +369,7 @@ class MoodPageState extends State<MoodPage> {
 
 
             new Padding(
-              padding: const EdgeInsets.only(top: 60.0),
+              padding: const EdgeInsets.only(top: 50.0),
             ),
 
             new MaterialButton(
@@ -393,13 +385,12 @@ class MoodPageState extends State<MoodPage> {
               splashColor: Colors.black87,
               textColor: Colors.black,
               onPressed: () {
-                _incrementCounter();
                 Navigator.pushNamed(context, '/lonelyVideo1');
               },
             ),
 
             new Padding(
-              padding: const EdgeInsets.only(top: 30.0),
+              padding: const EdgeInsets.only(top: 25.0),
             ),
 
             new MaterialButton(
@@ -415,14 +406,13 @@ class MoodPageState extends State<MoodPage> {
               splashColor: Colors.black87,
               textColor: Colors.black,
               onPressed: () {
-                _incrementCounter();
                 Navigator.pushNamed(context, '/lazyVideo1');
               },
             ),
 
 
             new Padding(
-              padding: const EdgeInsets.only(top: 30.0),
+              padding: const EdgeInsets.only(top: 25.0),
             ),
 
 
@@ -439,13 +429,12 @@ class MoodPageState extends State<MoodPage> {
               splashColor: Colors.black,
               textColor: Colors.black,
               onPressed: () {
-                _incrementCounter();
                 Navigator.pushNamed(context, '/angryVideo1');
               },
             ),
 
             new Padding(
-              padding: const EdgeInsets.only(top: 30.0),
+              padding: const EdgeInsets.only(top: 25.0),
             ),
 
             new MaterialButton(
@@ -461,13 +450,14 @@ class MoodPageState extends State<MoodPage> {
               splashColor: Colors.black,
               textColor: Colors.black,
               onPressed: () {
-                _incrementCounter();
                 Navigator.pushNamed(context, '/overwhelmedVideo1');
               },
             ),
 
+
+
             new Padding(
-              padding: const EdgeInsets.only(top: 60.0),
+              padding: const EdgeInsets.only(top: 45.0),
             ),
 
             MaterialButton(
@@ -480,30 +470,38 @@ class MoodPageState extends State<MoodPage> {
             ),
 
             new Padding(
-              padding: const EdgeInsets.only(top: 20.0),
+              padding: const EdgeInsets.only(top: 10.0),
             ),
 
 
             MaterialButton(
               textColor: Colors.black87,
               color: Colors.redAccent,
-              child: Text('Back to Login Page'),
+              child: Text('Logout'),
               onPressed: () {
                 Navigator.pushNamed(context, '/LoginPage');
               },
             ),
 
-
           ],
         ),
-      ),
-    );
+      );
   }
+}
+
+class AwfulOverlayWindow extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => AwfulOverlayWindowState();
 }
 
 class BadOverlayWindow extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => BadOverlayWindowState();
+}
+
+class BeenBetterOverlayWindow extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => BeenBetterOverlayWindowState();
 }
 
 class OkayOverlayWindow extends StatefulWidget {
@@ -514,6 +512,58 @@ class OkayOverlayWindow extends StatefulWidget {
 class GoodOverlayWindow extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => GoodOverlayWindowState();
+}
+
+class GreatOverlayWindow extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => GreatOverlayWindowState();
+}
+
+
+class AwfulOverlayWindowState extends State<AwfulOverlayWindow>
+  with SingleTickerProviderStateMixin {
+  AnimationController controller;
+  Animation<double> scaleAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+
+    controller =
+      AnimationController(vsync: this, duration: Duration(milliseconds: 450));
+    scaleAnimation =
+      CurvedAnimation(parent: controller, curve: Curves.elasticInOut);
+
+    controller.addListener(() {
+      setState(() {});
+    });
+
+    controller.forward();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Material(
+        color: Colors.transparent,
+        child: ScaleTransition(
+          scale: scaleAnimation,
+          child: Container(
+            decoration: ShapeDecoration(
+              color: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15.0))),
+            child: Padding(
+              padding: const EdgeInsets.all(50.0),
+              child: Text("Lonely (Video 3) or Angry (Video 2): This awful feeling you have, no matter what it's from, "
+                "happens to everyone. We all have moments where we aren't feeling great, good, or even okay. Things will "
+                "always happen, but you need to lift your head, listen to some good advice, and keep going. You got this."),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 }
 
 class BadOverlayWindowState extends State<BadOverlayWindow>
@@ -551,9 +601,54 @@ class BadOverlayWindowState extends State<BadOverlayWindow>
                 borderRadius: BorderRadius.circular(15.0))),
             child: Padding(
               padding: const EdgeInsets.all(50.0),
-              child: Text("Loneliness (Video 1) or Angry (Video 1): It'll be alright, we've all had those days. "
-                "If you keep your head up, watch some videos, and take some time to relax, you will "
+              child: Text("Lonely (Video 1) or Angry (Video 1): It'll be alright, it's just one of those days."
+                " If you keep your head up, watch some videos, and take some time to relax, you will "
                 "start to feel better in no time."),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class BeenBetterOverlayWindowState extends State<BeenBetterOverlayWindow>
+  with SingleTickerProviderStateMixin {
+  AnimationController controller;
+  Animation<double> scaleAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+
+    controller =
+      AnimationController(vsync: this, duration: Duration(milliseconds: 450));
+    scaleAnimation =
+      CurvedAnimation(parent: controller, curve: Curves.elasticInOut);
+
+    controller.addListener(() {
+      setState(() {});
+    });
+
+    controller.forward();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Material(
+        color: Colors.transparent,
+        child: ScaleTransition(
+          scale: scaleAnimation,
+          child: Container(
+            decoration: ShapeDecoration(
+              color: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15.0))),
+            child: Padding(
+              padding: const EdgeInsets.all(50.0),
+              child: Text("Lonely (Video 1): I hope whatever is upsetting you, does not get to you. I hope you feel "
+                "better soon. You deserve that."),
             ),
           ),
         ),
@@ -598,8 +693,8 @@ class OkayOverlayWindowState extends State<OkayOverlayWindow>
                 borderRadius: BorderRadius.circular(15.0))),
             child: Padding(
               padding: const EdgeInsets.all(50.0),
-              child: Text("Overwhelmed (Video 3): Watch a video, it could really help you. "
-                "Be proud of yourself and never have a day that makes you feel overwhelmed or just 'okay'."),
+              child: Text("Overwhelmed (Video 2): Watch a video, it could really help you."
+                " Be proud of yourself and never have a day that makes you feel overwhelmed or just 'okay'."),
             ),
           ),
         ),
@@ -644,8 +739,8 @@ class GoodOverlayWindowState extends State<GoodOverlayWindow>
                 borderRadius: BorderRadius.circular(15.0))),
             child: Padding(
               padding: const EdgeInsets.all(50.0),
-              child: Text("Laziness (Video 3): Lets turn that good into great! "
-                "Keep up the motivation, and don't forget what's important in your daily priorities."),
+              child: Text("Lazy (Video 2): Lets turn that good into great!"
+                " Keep up the motivation, and don't forget what's important in your daily priorities."),
             ),
           ),
         ),
@@ -654,17 +749,67 @@ class GoodOverlayWindowState extends State<GoodOverlayWindow>
   }
 }
 
+class GreatOverlayWindowState extends State<GreatOverlayWindow>
+  with SingleTickerProviderStateMixin {
+  AnimationController controller;
+  Animation<double> scaleAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+
+    controller =
+      AnimationController(vsync: this, duration: Duration(milliseconds: 450));
+    scaleAnimation =
+      CurvedAnimation(parent: controller, curve: Curves.elasticInOut);
+
+    controller.addListener(() {
+      setState(() {});
+    });
+
+    controller.forward();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Material(
+        color: Colors.transparent,
+        child: ScaleTransition(
+          scale: scaleAnimation,
+          child: Container(
+            decoration: ShapeDecoration(
+              color: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15.0))),
+            child: Padding(
+              padding: const EdgeInsets.all(50.0),
+              child: Text("No videos to reccommend here! Go enjoy your day, find a hobby, get out of the house,"
+                " and have fun. 😎"
+            ),
+          ),
+        ),
+      ),
+      ),
+    );
+  }
+}
+
 
 class ProfilePage extends StatefulWidget {
   @override
-  State createState() => new ProfilePageState();
+  ProfilePageState createState() => ProfilePageState();
 }
 
 
 class ProfilePageState extends State<ProfilePage> {
 
-  List<String> _moods = ['Bad 😭', 'Okay 😐', 'Good 😊'];
+    var currentUser = auth.getCurrentUser();
+
+
+  List<String> _moods = ['Awful 😭', 'Bad 🙃', 'Ive Been Better 😒', 'Okay 😐', 'Good 😊', 'Great 🤩'];
   String _selectedMoods;
+
 
   @override
   Widget build(BuildContext context){
@@ -679,7 +824,7 @@ class ProfilePageState extends State<ProfilePage> {
           children: <Widget>[
 
             Text(
-              'Profile Page',
+              'Welcome, ',
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontFamily: 'BalooTammudu2',
@@ -689,18 +834,37 @@ class ProfilePageState extends State<ProfilePage> {
             ),
 
 
+
+            new Column(
+              children: <Widget>[
+                new Text(
+                  emailController.text,
+                  style: TextStyle(
+                    fontFamily: 'BalooTammudu2',
+                    height: 1,
+                    fontSize: 25,
+                  ),
+                ),
+              ],
+            ),
+
+
             new Padding(
               padding: const EdgeInsets.only(top: 20.0),
             ),
 
-          CircleAvatar(
-            radius: 70,
-            backgroundImage: NetworkImage('https://www.pngjoy.com/pngm/136/2750635_gray-circle-login-user-icon-png-transparent-png.png'),
-          ),
+            CircleAvatar(
+              radius: 70,
+              backgroundImage: NetworkImage('https://i.ibb.co/xJ86Gm9/Screen-Shot-2020-04-24-at-1-40-05-AM.png'),
+            ),
+
+
+
 
             new Padding(
-              padding: const EdgeInsets.only(top: 70.0),
+              padding: const EdgeInsets.only(top: 50.0),
             ),
+
 
             Text(
               'Personalized Choices',
@@ -708,7 +872,7 @@ class ProfilePageState extends State<ProfilePage> {
               style: TextStyle(
                 fontFamily: 'BalooTammudu2',
                 height: 1,
-                fontSize: 35,
+                fontSize: 30,
                 fontWeight: FontWeight.bold),
             ),
 
@@ -746,10 +910,26 @@ class ProfilePageState extends State<ProfilePage> {
               textColor: Colors.black,
 
               onPressed:(){
-                if(_selectedMoods == 'Bad 😭'){
+                if(_selectedMoods == 'Awful 😭'){
+                  showDialog(
+                    context: context,
+                    builder: (_) => AwfulOverlayWindow(),
+
+                  );
+                }
+
+                if(_selectedMoods == 'Bad 🙃'){
                   showDialog(
                     context: context,
                     builder: (_) => BadOverlayWindow(),
+
+                  );
+                }
+
+                if(_selectedMoods == 'Ive Been Better 😒'){
+                  showDialog(
+                    context: context,
+                    builder: (_) => BeenBetterOverlayWindow(),
 
                   );
                 }
@@ -770,18 +950,22 @@ class ProfilePageState extends State<ProfilePage> {
                   );
                 }
 
-              }),
+                if(_selectedMoods == 'Great 🤩'){
+                  showDialog(
+                    context: context,
+                    builder: (_) => GreatOverlayWindow(),
 
-
-            new Padding(
-              padding: const EdgeInsets.only(top: 100.0),
+                  );
+                }
+              }
             ),
 
 
-
             new Padding(
-              padding: const EdgeInsets.only(top: 0.0),
+              padding: const EdgeInsets.only(top: 70.0),
             ),
+
+
 
             MaterialButton(
               textColor: Colors.black87,
@@ -855,6 +1039,7 @@ class LonelyVideo1 extends StatelessWidget{
                 Navigator.pushNamed(context, '/lonelyVideo3');
               }
             ),
+
 
             new Padding(
               padding: const EdgeInsets.only(top: 50.0),
@@ -931,6 +1116,7 @@ class LonelyVideo2 extends StatelessWidget{
               }
             ),
 
+
             new Padding(
               padding: const EdgeInsets.only(top: 50.0),
             ),
@@ -949,6 +1135,8 @@ class LonelyVideo2 extends StatelessWidget{
     );
   }
 }
+
+
 
 class LonelyVideo3 extends StatelessWidget{
   @override
@@ -1083,6 +1271,7 @@ class LazyVideo1 extends StatelessWidget{
               }
             ),
 
+
             new Padding(
               padding: const EdgeInsets.only(top: 50.0),
             ),
@@ -1160,6 +1349,7 @@ class LazyVideo2 extends StatelessWidget{
               }
             ),
 
+
             new Padding(
               padding: const EdgeInsets.only(top: 50.0),
             ),
@@ -1178,8 +1368,6 @@ class LazyVideo2 extends StatelessWidget{
     );
   }
 }
-
-
 
 class LazyVideo3 extends StatelessWidget{
   @override
@@ -1257,7 +1445,6 @@ class LazyVideo3 extends StatelessWidget{
 }
 
 
-
 class AngryVideo1 extends StatelessWidget{
   @override
   Widget build(BuildContext context){
@@ -1313,6 +1500,7 @@ class AngryVideo1 extends StatelessWidget{
                 Navigator.pushNamed(context, '/angryVideo3');
               }
             ),
+
 
             new Padding(
               padding: const EdgeInsets.only(top: 50.0),
@@ -1389,6 +1577,7 @@ class AngryVideo2 extends StatelessWidget{
               }
             ),
 
+
             new Padding(
               padding: const EdgeInsets.only(top: 50.0),
             ),
@@ -1407,6 +1596,7 @@ class AngryVideo2 extends StatelessWidget{
     );
   }
 }
+
 
 
 class AngryVideo3 extends StatelessWidget{
@@ -1450,18 +1640,18 @@ class AngryVideo3 extends StatelessWidget{
             MaterialButton(
               textColor: Colors.black,
               color: Colors.yellow[100],
-              child: Text('Video 2'),
+              child: Text('Video 1'),
               onPressed: () {
-                Navigator.pushNamed(context, '/angryVideo2');
+                Navigator.pushNamed(context, '/angryVideo1');
               }
             ),
 
             MaterialButton(
               textColor: Colors.black,
               color: Colors.yellow[100],
-              child: Text('Video 3'),
+              child: Text('Video 2'),
               onPressed: () {
-                Navigator.pushNamed(context, '/angryVideo3');
+                Navigator.pushNamed(context, '/angryVideo2');
               }
             ),
 
@@ -1540,6 +1730,7 @@ class OverwhelmedVideo1 extends StatelessWidget{
               }
             ),
 
+
             new Padding(
               padding: const EdgeInsets.only(top: 50.0),
             ),
@@ -1616,6 +1807,7 @@ class OverwhelmedVideo2 extends StatelessWidget{
               }
             ),
 
+
             new Padding(
               padding: const EdgeInsets.only(top: 50.0),
             ),
@@ -1634,6 +1826,7 @@ class OverwhelmedVideo2 extends StatelessWidget{
     );
   }
 }
+
 
 
 class OverwhelmedVideo3 extends StatelessWidget{
