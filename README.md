@@ -1,16 +1,9 @@
-# cs4990_project
+# CS4990_project
 
-A new flutter application for CS4990.
+CS4990- Mobile App Development Project
 
-## Getting Started
+Completed on Android Studio using Flutter
 
-This project is a starting point for a Flutter application.
+## Daily Motive
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Landing Page available here: https://eadamian.github.io/dailymotive/
