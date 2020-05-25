@@ -1,6 +1,6 @@
-# CS4990_project
+# Daily Motive
 
-CS4990- Mobile App Development Project
+Mobile App Development Project
 
 Completed on Android Studio using Flutter
 
