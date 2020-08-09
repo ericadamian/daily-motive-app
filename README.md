@@ -1,4 +1,4 @@
-# Daily Motive
+# Project: Daily Motive
 
 Mobile App Development Project
 
